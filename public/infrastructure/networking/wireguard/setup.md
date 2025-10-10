@@ -2,7 +2,7 @@
 title: Wireguard Setup
 description: How to do initial wireguard setup
 published: true
-date: 2025-10-10T15:28:50.620Z
+date: 2025-10-10T15:31:42.263Z
 tags: wireguard, networking, setup
 editor: markdown
 dateCreated: 2025-10-10T15:28:50.620Z
@@ -108,6 +108,7 @@ sudo ufw route allow in on wg0 from 10.100.0.0/24 to 10.100.0.0/24
 * **[Interface]**: defines the local WireGuard network interface on this machine (e.g., wg0). It’s the “self” side of the tunnel
 * **Address**: Wireguard address for the machine the config file is on
 * **PrivateKey**: the private key on the machine. for VPS machine, Private key is VPS private key
+#### Example:
 ```bash
 [Interface]
 Address = 10.100.0.1/24
