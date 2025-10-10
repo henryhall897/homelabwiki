@@ -2,7 +2,7 @@
 title: Wireguard Setup
 description: How to do initial wireguard setup
 published: true
-date: 2025-10-10T15:41:51.006Z
+date: 2025-10-10T21:53:48.326Z
 tags: wireguard, networking, setup
 editor: markdown
 dateCreated: 2025-10-10T15:28:50.620Z
@@ -16,17 +16,36 @@ dateCreated: 2025-10-10T15:28:50.620Z
 ## 1. Decide your topology
 * **Listener (Server)**: your VPS should listen on a stable public IP/DNS and port 51820/udp (or any unused UDP port).
 * **Peers**: everything else (home dev box, laptop, k3s nodes). Peers dial the VPS endpoint; this makes them portable.
-
 ### Addressing plan (example):
-* WireGuard subnet: 10.100.0.0/24
-* VPS (server) address: 10.100.0.1/24
-* Peer #1 : 10.100.0.2/24
-* Peer #2 : 10.100.0.3/24
-
+* **WireGuard subnet**: 10.100.0.0/24
+* **Peer 1 (VPS)**: 10.100.0.1/32
+* **Peer 2 (Server Spoke)** : 10.100.0.2/32
+* **Peer 3 (User Interface)** : 10.100.0.3/24
 ### Security posture: 
 * explicitly set Endpoint on peers (If device is portable like a laptop, do not set endpoint explicit
 * constrain AllowedIPs per peer
 * use a preshared key for an extra layer of secrecy. 
+### Example Topology Diagram
+```mermaid
+flowchart TD
+  %% Hub-and-Spoke with AllowedIPs
+  subgraph WG["WireGuard Hub-and-Spoke (wg0)"]
+    P1["Peer 1 — VPS (Hub)\nWG IP: 10.100.0.1\n\n Direct peers with both (2 tunnels) and allows both IPs\n\n"]
+    P2["Peer 2 — Server Node (Spoke)\nWG IP: 10.100.0.2\nService: SSH\n\n[Peer (VPS) AllowedIPs]\n- 10.100.0.1/32(Hub), 10.100.0.3/32(User Interface Spoke)\n- 10.100.0.3/32  (Peer 3 via hub)<br><br>"]
+    P3["Peer 3 — User Interface (Spoke)\nWG IP: 10.100.0.3\nClient: ssh\n\n[Peer (VPS) AllowedIPs]\n- 10.100.0.1/32  (hub itself)\n- 10.100.0.2/32  (Peer 2 via hub)\n\n"]
+  end
+
+  %% Tunnels
+  P1 ---|"WG tunnel"| P2
+  P1 ---|"WG tunnel"| P3
+
+  %% Traffic path
+  P3 ==>|"ssh to 10.100.0.2\n(route to hub per AllowedIPs)\n\n"| P1
+  P1 ==>|"forward to 10.100.0.2\n\n"| P2
+  P2 ==>|"reply via hub\n\n"| P1
+  P1 ==>|"forward reply\n\n"| P3
+
+```
 
 ## 2. Install WireGuard
 
@@ -102,169 +121,155 @@ sudo ufw route allow in on wg0 from 10.100.0.0/24 to 10.100.0.0/24
 
 ```
 
-## 6) Server config (/etc/wireguard/wg0.conf) on the VPS (Listener)
+## 6. Server config (/etc/wireguard/wg0.conf) on the VPS (Listener)
 ### Interface
 * **wg0.conf**: file name is the name of the wireguard interface. the tunnel is now wg0
 * **[Interface]**: defines the local WireGuard network interface on this machine (e.g., wg0). It’s the “self” side of the tunnel
 * **Address**: Wireguard address for the machine the config file is on
 * **PrivateKey**: the private key on the machine. for VPS machine, Private key is VPS private key
-#### Example:
-```bash
-[Interface]
-Address = 10.100.0.1/24
-ListenPort = 51820
-# VPS private key:
-PrivateKey = <contents of /etc/wireguard/keys/private.key>
-```
-### Peers 
-
-#### Optional: if you want to push DNS to peers (Linux peers can ignore if undesired)
-**DNS**: Setting a DNS in the interface means that the node will use the tunnel for all traffic. 
-##### Example:
+#### Example: [Interface]
 ```bash
 [Interface]
 Address = 10.100.0.1/24
 ListenPort = 51820
 PrivateKey = <contents of /etc/wireguard/keys/private.key>
-DNS = 10.100.0.1
 ```
-```
-# Peer 1
+### Peers
+* **PublicKey**: The public key of the device on the other side of the tunnel.
+* **PresharedKey**: Symmetrical Key unqiue to each peer, each side gets same key 
+* **AllowedIPs**: Signifies which wireguard address are allowed to use the tunnel between to contact the node. 
+	* **Forwarded IPs**: Need to allow multiple IPs from the peer performing the forwarding
+* **PersistentKeepalive**: Tells Wireguard to actively send packets and ensure connection still exists through consistent handshakes.
+	* good for roaming devices like a laptop taken to different networks or for troublshooting
+	* number corresponds to seconds (25 = 25 seconds)
+#### Example: Peer 2
+* Has a tunnel (Direct peer) with **Peer 1**
+* Also needs to accept traffic from **Peer 3** (indirect peer) that is forwarded from **Peer 1**
+#### Peer 2 wg0.conf peer section
+```bash
+# tunnel to peer 1
 [Peer]
-# Laptop public key:
 PublicKey = <peer1_public_key>
-# Extra secrecy:
 PresharedKey = <contents of /etc/wireguard/keys/psk-peer1.key>
-# Only this IP belongs to Peer1
-AllowedIPs = 10.100.0.3/32
+# allows both peer 1 and peer 3
+AllowedIPs = 10.100.0.1/32, 10.100.0.3/32
+PersistentKeepalive = 25 
+```
+### Notes
+* The server does not set Endpoint for peers; peers dial in to the server.
+* Use tight AllowedIPs on server peers (one /32 per device) for clean routing and access control.
+	* Can add extra AllowedIPs for forwarded address
+ * PersistentKeepalive can be omitted on the Hub
+ 
+### Full Example Config Files
+Following diagram example above:
+#### Hub (VPS) - listener
+```bash
+[Interface]
+Address = 10.100.0.1/32
+PrivateKey = <peer1_private_key>
+ListenPort = 51280
 
-# Peer 2
+# Peer 2 server node
 [Peer]
-PublicKey = <peer2_public_key>
-PresharedKey = <contents of /etc/wireguard/keys/psk-peer2.key>
-AllowedIPs = 10.100.0.6/32
+PublicKey = <peer 2 pub key>
+PresharedKey = <peer 2 to vps preshared key (psk)>
+AllowedIPs = 10.100.0.2/32
+
+[Peer]
+PublicKey = <peer 3 pub key>
+PresharedKey = <peer 3 to vps psk>
+AllowedIPs = 10.100.0.3/32
 ```
 
-Notes
-
-The server does not set Endpoint for peers; peers dial in to the server.
-
-Use tight AllowedIPs on server peers (one /32 per device) for clean routing and access control.
-
-7) Peer config (/etc/wireguard/wg0.conf) on a peer (e.g., Laptop)
+#### Peer 2 (Server Spoke)
+```bash
 [Interface]
-Address = 10.100.0.3/24
-PrivateKey = <peer1_private_key>
-# Optional local DNS while tunnel is up
-# DNS = 10.100.0.1
+Address = 10.100.0.2/32
+PrivateKey = <peer2_private_key>
+ListenPort = 51820
 
+# Peer 1 Hub
 [Peer]
-# VPS public key:
-PublicKey = <vps_public_key>
-# Same PSK used on the VPS for this link:
-PresharedKey = <contents of /etc/wireguard/keys/psk-peer1.key>
-# Route only the WG subnet through the tunnel (zero trust style)
-AllowedIPs = 10.100.0.0/24
-# VPS endpoint (public IP or DNS + UDP port)
-Endpoint = <vps.public.ip.or.dns>:51820
-# Keep NATs alive when peer is behind coffee shop/home routers
+PublicKey = <peer 1 pub key>
+PresharedKey = <peer 2 to vps preshared key (psk)>
+# Both peer 1 and peer 3 can use peer 1's tunnel
+AllowedIPs = 10.100.0.1/32, 10.100.0.3/32
+Endpoint = hubip:51820
 PersistentKeepalive = 25
+```
+#### Peer 3 (User Interface Spoke):
+```bash
+[Interface]
+Address = 10.100.0.3/32
+PrivateKey = <peer 3 private key>
+ListenPort = 51820
 
+# Peer 1 Hub
+[Peer]
+PublicKey = <peer 1 pub key>
+PresharedKey = <peer 3 to vps preshared key (psk)>
+# Peer 3 does not need to allow peer 2 unless peer 2 is
+# sending info to peer 3
+AllowedIPs = 10.100.0.1/32
+Endpoint = hubip:51820
+PersistentKeepalive = 25
+```
 
-Portability:
-
-By setting Endpoint on the peer, the peer can roam between networks and still reconnect to the VPS.
-
-Do not set an Endpoint on the VPS’s [Peer] entries; the VPS waits for the peers.
-
-8) Bring the tunnel up
-
-On each node:
-
-# Check config ownership/permissions (wg requires 600)
+## 8. Bring the tunnel up
+**On each node**:
+### Check config ownership/permissions (wg requires 600)
+```bash
 sudo chmod 600 /etc/wireguard/wg0.conf
-
-# Start once
+```
+### Start once
+```bash
 sudo wg-quick up wg0
-
-# Enable at boot
+```
+### Enable at boot
+```bash
 sudo systemctl enable wg-quick@wg0
-
-# Show status / live view
+```
+### Show status / live view
+```bash
 sudo wg show
 ip addr show wg0
+```
 
-
-Test basic reachability:
-
-# From peer to VPS
+### Test basic reachability:
+#### From peer to VPS
+```bash
 ping 10.100.0.1
-
-# From VPS to peer
+```
+#### From VPS to peer
+```bash
 ping 10.100.0.3
-
-9) (Optional) Add more peers
+```
+## 9. (Optional) Add more peers
 
 Repeat keygen on the new peer, create a PSK for that pair, add a [Peer] block on the VPS, and configure the peer with VPS’s public key + endpoint. Use unique /32 AllowedIPs per peer on the server.
 
-10) Hardening tips
+## 10. Hardening tips
+* Use preshared keys (PresharedKey) for every VPS↔Peer pair. It adds secrecy even if a public key is compromised.
+* Tight AllowedIPs:
+* On the server, use /32 per peer.
+* On peers, route only what you need (e.g., 10.100.0.0/24 or specific hosts like 10.100.0.7/32).
+* Explicit endpoints: for peers, always set Endpoint = vps.example.com:51820.
+* UFW forward rules: allow only what you intend across wg0.
+* Key hygiene: rotate keys periodically; store under /etc/wireguard/keys with 600 perms.
 
-Use preshared keys (PresharedKey) for every VPS↔Peer pair. It adds secrecy even if a public key is compromised.
-
-Tight AllowedIPs:
-
-On the server, use /32 per peer.
-
-On peers, route only what you need (e.g., 10.100.0.0/24 or specific hosts like 10.100.0.7/32).
-
-Explicit endpoints: for peers, always set Endpoint = vps.example.com:51820.
-
-UFW forward rules: allow only what you intend across wg0.
-
-Key hygiene: rotate keys periodically; store under /etc/wireguard/keys with 600 perms.
-
-11) Quick troubleshooting
-# See handshakes, endpoints, latest handshake time, transfer stats
-sudo wg show
-
-# Interface up?
-ip link show wg0
-
-# Routing?
-ip route show table main | grep 10.100.0.
-
-# Firewall counters (are forwards being dropped?)
-sudo iptables -vnL FORWARD
-sudo ufw status verbose
-
-# Logs
-journalctl -u wg-quick@wg0 -e
-
-12) Minimal copy/paste cheat sheet
-
-VPS
-
-sudo apt install -y wireguard
-sudo mkdir -p /etc/wireguard/keys && sudo chmod 700 /etc/wireguard/keys
-cd /etc/wireguard/keys
-wg genkey | sudo tee private.key >/dev/null
-sudo sh -c 'cat private.key | wg pubkey > public.key'
-wg genpsk | sudo tee psk-peer1.key >/dev/null
-sudo chmod 600 *.key
-echo 'net.ipv4.ip_forward=1' | sudo tee /etc/sysctl.d/99-wireguard.conf
-sudo sysctl --system
-sudo ufw allow 51820/udp
-
-
-Peer
-
-sudo apt install -y wireguard
-sudo mkdir -p /etc/wireguard/keys && sudo chmod 700 /etc/wireguard/keys
-cd /etc/wireguard/keys
-wg genkey | sudo tee private.key >/dev/null
-sudo sh -c 'cat private.key | wg pubkey > public.key'
-wg genpsk | sudo tee psk-peer1.key >/dev/null
-sudo chmod 600 *.key
-
-
-Then write the two wg0.conf files as shown above, sudo wg-quick up wg0 on both sides, and you’re live.
+## Optional: if you want to push DNS to peers (Linux peers can ignore if undesired)
+**DNS**: Setting a DNS in the interface means that the node will use the tunnel for DNS resolution
+### Pros
+* **Privacy**: Sends DNS queries through the tunnel (to your VPN resolver), avoiding ISP DNS.
+* **Leak reduction**: Paired with AllowedIPs that include the DNS server, helps prevent DNS leaking outside the tunnel.
+### Cons
+* **Resolver dependency**: If the WG DNS (e.g., 10.100.0.1) is down or unreachable, lookups fail.
+* **Route coupling**: You must include the DNS IP in AllowedIPs; otherwise DNS packets won’t reach it.
+* **Linux variance**: Behavior depends on systemd-resolved/resolvconf/NetworkManager; on some setups it may be ignored or fight with other managers.
+* **Captive portals / public Wi-Fi**: Forcing VPN DNS can break initial captive portal access until you connect and authenticate.
+* **All-or-nothing**: Basic DNS= sets a global resolver; it doesn’t do per-domain split-DNS by itself (needs extra resolver config).
+* **Troubleshooting complexity**: If name resolution breaks, it’s one more moving part (WG + resolver + routes).
+##### TLDR: 
+* The Homelab setup does not use wireguard DNS. That would make the home network work more like services such as NORD VPN 
+* Would cause more use on VPS. could lead to bottlenecks or extra charges
