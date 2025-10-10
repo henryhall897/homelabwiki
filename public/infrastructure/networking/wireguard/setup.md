@@ -2,7 +2,7 @@
 title: Wireguard Setup
 description: How to do initial wireguard setup
 published: true
-date: 2025-10-10T21:53:48.326Z
+date: 2025-10-10T21:56:50.250Z
 tags: wireguard, networking, setup
 editor: markdown
 dateCreated: 2025-10-10T15:28:50.620Z
@@ -273,3 +273,7 @@ Repeat keygen on the new peer, create a PSK for that pair, add a [Peer] block on
 ##### TLDR: 
 * The Homelab setup does not use wireguard DNS. That would make the home network work more like services such as NORD VPN 
 * Would cause more use on VPS. could lead to bottlenecks or extra charges
+
+## What's next?
+* [TroubleShooting]()
+* [Important Commands List]()
