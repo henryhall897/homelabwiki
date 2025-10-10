@@ -2,7 +2,7 @@
 title: Wireguard Overview
 description: Wireguard Overview
 published: true
-date: 2025-10-08T13:59:46.874Z
+date: 2025-10-10T22:57:56.262Z
 tags: overview, wireguard, networking
 editor: markdown
 dateCreated: 2025-10-04T20:45:03.410Z
@@ -122,5 +122,8 @@ Combined with a **cloud-hosted VPS gateway** and planned **Ansible automation**,
 
 ---
 
-**Breadcrumb:**  
-[Networking](../networking) › [WireGuard Overview](./wireguard)
+## Wireguard Articles
+* [Overview](/public/infrastructure/networking/wireguard)
+* [Setup](/public/infrastructure/networking/wireguard/setup)
+* [Troubleshooting](/public/infrastructure/networking/wireguard/troubleshooting)
+* [Commands](/public/infrastructure/networking/wireguard/commands)
