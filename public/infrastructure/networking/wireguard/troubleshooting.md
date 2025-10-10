@@ -2,7 +2,7 @@
 title: Wireguard Troubleshooting
 description: Common Issues with Wireguard and how to solve them
 published: true
-date: 2025-10-10T22:45:37.972Z
+date: 2025-10-10T22:58:59.559Z
 tags: wireguard, networking, troubleshooting, infrastructure, public
 editor: markdown
 dateCreated: 2025-10-10T22:45:37.971Z
@@ -257,3 +257,8 @@ PersistentKeepalive = 25
 * MTU too high on paths with overhead (try 1420).
 * File perms too open; wg-quick/kernel refuses to load (chmod 600).
 * DNS set in [Interface] but unreachable per AllowedIPs.
+## Wireguard Articles
+* [Overview](/public/infrastructure/networking/wireguard)
+* [Setup](/public/infrastructure/networking/wireguard/setup)
+* [Troubleshooting](/public/infrastructure/networking/wireguard/troubleshooting)
+* [Commands](/public/infrastructure/networking/wireguard/commands)
