@@ -2,7 +2,7 @@
 title: Wireguard Commands
 description: A list of all Wireguard commands
 published: true
-date: 2025-10-10T22:54:20.183Z
+date: 2025-10-10T22:57:24.425Z
 tags: wireguard, networking, infrastructure, public, commands
 editor: markdown
 dateCreated: 2025-10-10T22:54:20.183Z
@@ -92,3 +92,8 @@ DNS = 10.100.0.1     # use resolver over WG while wg0 is up
 sudo apt install -y qrencode
 sudo qrencode -t ansiutf8 < /etc/wireguard/wg0.conf
 ``` 
+## Wireguard Articles
+* [Overview](/public/infrastructure/networking/wireguard)
+* [Setup](/public/infrastructure/networking/wireguard/setup)
+* [Troubleshooting](/public/infrastructure/networking/wireguard/troubleshooting)
+* [Commands](/public/infrastructure/networking/wireguard/commands)
