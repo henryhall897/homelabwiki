@@ -2,7 +2,7 @@
 title: Wireguard Setup
 description: How to do initial wireguard setup
 published: true
-date: 2025-10-10T15:31:42.263Z
+date: 2025-10-10T15:41:51.006Z
 tags: wireguard, networking, setup
 editor: markdown
 dateCreated: 2025-10-10T15:28:50.620Z
@@ -116,11 +116,20 @@ ListenPort = 51820
 # VPS private key:
 PrivateKey = <contents of /etc/wireguard/keys/private.key>
 ```
-```
-# Optional: if you want to push DNS to peers (Linux peers can ignore if undesired)
-# DNS = 10.100.0.1
+### Peers 
 
-# Peer 1 (Laptop)
+#### Optional: if you want to push DNS to peers (Linux peers can ignore if undesired)
+**DNS**: Setting a DNS in the interface means that the node will use the tunnel for all traffic. 
+##### Example:
+```bash
+[Interface]
+Address = 10.100.0.1/24
+ListenPort = 51820
+PrivateKey = <contents of /etc/wireguard/keys/private.key>
+DNS = 10.100.0.1
+```
+```
+# Peer 1
 [Peer]
 # Laptop public key:
 PublicKey = <peer1_public_key>
@@ -129,7 +138,7 @@ PresharedKey = <contents of /etc/wireguard/keys/psk-peer1.key>
 # Only this IP belongs to Peer1
 AllowedIPs = 10.100.0.3/32
 
-# Peer 2 (Devhost)
+# Peer 2
 [Peer]
 PublicKey = <peer2_public_key>
 PresharedKey = <contents of /etc/wireguard/keys/psk-peer2.key>
