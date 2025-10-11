@@ -2,7 +2,7 @@
 title: Wireguard Troubleshooting
 description: Common Issues with Wireguard and how to solve them
 published: true
-date: 2025-10-10T22:58:59.559Z
+date: 2025-10-11T00:30:42.246Z
 tags: wireguard, networking, troubleshooting, infrastructure, public
 editor: markdown
 dateCreated: 2025-10-10T22:45:37.971Z
@@ -94,7 +94,7 @@ PersistentKeepalive = 25
 * If DNS might fail, try the VPS public IP directly.
 * If your VPS has IPv6 DNS but no IPv6 path, use an IPv4 A record or the raw IPv4.
 
-## 5) AllowedIPs ≡ routing (most common mistake)
+## 5. AllowedIPs ≡ routing (most common mistake)
 
 Hub (VPS) should have one /32 per spoke:
 
