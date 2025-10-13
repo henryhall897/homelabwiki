@@ -2,7 +2,7 @@
 title: Wireguard Overview
 description: Wireguard Overview
 published: true
-date: 2025-10-11T00:28:51.723Z
+date: 2025-10-13T15:28:09.307Z
 tags: overview, wireguard, networking
 editor: markdown
 dateCreated: 2025-10-04T20:45:03.410Z
@@ -75,7 +75,7 @@ In the overall architecture:
 
 This combination keeps the **home IP hidden**, the **network segmented**, and **access tightly controlled**.
 
-> 🔗 For details on the VPS’s public routing and isolation layer, see [VPS Gateway](./vps-gateway.md).
+> 🔗 For details on the VPS’s public routing and isolation layer, see [VPS Gateway](./vps).
 
 ---
 
