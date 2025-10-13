@@ -2,7 +2,7 @@
 title: Networking Overview
 description: Overview of Networking of homelab
 published: true
-date: 2025-10-08T13:54:36.949Z
+date: 2025-10-13T15:17:29.568Z
 tags: overview
 editor: markdown
 dateCreated: 2025-10-08T02:47:51.188Z
@@ -53,7 +53,7 @@ UFW, nftables, and Kubernetes network policies are used to limit connections by 
 DNS plays a central role in routing both public and private traffic:
 - **Public DNS:** Managed domains (e.g., `*.henryhalldev.com`) point to the VPS gateway.  
 - **Private DNS:** Local resolution for cluster services and internal hostnames (e.g., `*.local`).  
-> 🔗 See [DNS Configuration](./dns/local-dns.md)
+> 🔗 See [DNS Configuration](./networking/dnsdomains)
 
 ---
 
