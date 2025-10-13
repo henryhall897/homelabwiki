@@ -2,7 +2,7 @@
 title: Networking Overview
 description: Overview of Networking of homelab
 published: true
-date: 2025-10-13T15:22:31.281Z
+date: 2025-10-13T15:24:28.007Z
 tags: overview
 editor: markdown
 dateCreated: 2025-10-08T02:47:51.188Z
@@ -72,7 +72,8 @@ This networking model combines **WireGuard for encryption**, **VPS for isolation
 
 All public traffic is funneled through a hardened VPS, and all internal communication occurs through an encrypted private network, ensuring both security and flexibility across homelab services.
 
----
-
-**Breadcrumb:**  
-[Infrastructure](../infrastructure.md) › [Networking Overview](./networking)
+## Sub Articles  
+* [wireguard](/public/infrastructure/networking/wireguard)
+* [VPS](/public/infrastructure/networking/vps)
+* [Firewall](/public/infrastructure/networking/firewall)
+* [DNS and Domains](/public/infrastructure/networking/dnsdomains)
