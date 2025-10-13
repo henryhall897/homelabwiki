@@ -2,76 +2,60 @@
 title: Infrastructure Overview
 description: Infrastructure of Homelab 
 published: true
-date: 2025-10-13T15:38:31.112Z
+date: 2025-10-13T15:45:35.396Z
 tags: overview, infrastructure, public
 editor: markdown
 dateCreated: 2025-10-13T15:38:31.112Z
 ---
 
-Infrastructure Overview
+# Infrastructure Overview
 
-🔗 Home › Infrastructure Overview
+## Purpose
 
-Purpose
+* The infrastructure layer provides the physical and virtual foundation of the homelab.
+* It brings together hardware, operating systems, orchestration tools, storage, and monitoring systems under a single cohesive environment.
 
-The infrastructure layer provides the physical and virtual foundation of the homelab.
-It brings together hardware, operating systems, orchestration tools, storage, and monitoring systems under a single cohesive environment.
+## This layer is designed to:
+* Deliver a stable and reproducible platform for all services
+* Support horizontal scaling through modular nodes and containers
+* Maintain strict isolation between production, test, and management workloads
+* Enable automation and observability across all components
 
-This layer is designed to:
+## Core Components
+### 1. Hardware
+The **physical backbone** of the homelab, spanning local and remote nodes:
 
-Deliver a stable and reproducible platform for all services
-
-Support horizontal scaling through modular nodes and containers
-
-Maintain strict isolation between production, test, and management workloads
-
-Enable automation and observability across all components
-
-Core Components
-1. Hardware
-
-The physical backbone of the homelab, spanning local and remote nodes:
-
-Raspberry Pi cluster (control-plane and worker nodes)
-
-Mini-PC nodes for heavier workloads
-
-Hetzner VPS serving as the public access gateway
-
-Devhost workstation for development and orchestration
+* Raspberry Pi cluster (control-plane and worker nodes)
+* Mini-PC nodes for heavier workloads
+* Hetzner VPS serving as the public access gateway
+* Devhost workstation for development and orchestration
 
 Network devices such as routers, MoCA adapters, and managed switches
 
-🔗 See Hardware Overview
+🔗 See Hardware Overview - todo add link
 
-2. Operating Systems
+### 2. Operating Systems
 
-Each node runs a hardened, minimal Linux base — primarily Ubuntu Server — configured for reliability and low resource overhead.
+Each node runs a *hardened, minimal Linux base* — primarily **Ubuntu Server** — configured for reliability and low resource overhead.
 
-Key configurations include:
+#### Key configurations include:
+* Non-root operation and least-privilege user roles
+* UFW and kernel-level network security
+* Automated updates and SSH hardening
 
-Non-root operation and least-privilege user roles
+🔗 See Operating Systems Overview - todo add article + link
 
-UFW and kernel-level network security
+### 3. Networking
 
-Automated updates and SSH hardening
-
-🔗 See Operating Systems Overview
-
-3. Networking
-
-The private communication backbone that links all nodes and services.
+The **private communication backbone** that links all nodes and services.
 It uses WireGuard VPN to form an encrypted overlay network connecting the VPS, cluster nodes, and remote devices.
 
-Core elements include:
+#### Core elements include:
+* [WireGuard VPN](./infrastructure/networking/wireguard)
+* [VPS Gateway](./infrastructure/networking/vps)
+* [Firewall and traffic segmentation](./infrastructure/networking/firewall)
 
-WireGuard VPN
-
-VPS Gateway
-
-Firewall and traffic segmentation
-
-DNS and domain management
+### DNS and domain management
 
 🔗 See Networking Overview
 
