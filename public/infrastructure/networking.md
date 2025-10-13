@@ -2,7 +2,7 @@
 title: Networking Overview
 description: Overview of Networking of homelab
 published: true
-date: 2025-10-13T15:17:29.568Z
+date: 2025-10-13T15:22:31.281Z
 tags: overview
 editor: markdown
 dateCreated: 2025-10-08T02:47:51.188Z
@@ -54,15 +54,6 @@ DNS plays a central role in routing both public and private traffic:
 - **Public DNS:** Managed domains (e.g., `*.henryhalldev.com`) point to the VPS gateway.  
 - **Private DNS:** Local resolution for cluster services and internal hostnames (e.g., `*.local`).  
 > 🔗 See [DNS Configuration](./networking/dnsdomains)
-
----
-
-### 5. Network Topology
-The homelab follows a **hub-and-spoke** design:
-- **Hub:** The VPS, acting as the central access point.  
-- **Spokes:** Home servers, cluster nodes, and remote devices connected via WireGuard peers.  
-Future expansions include VLAN segmentation and more granular routing policies.  
-> 🔗 See [Network Topology](./routing/topology.md)
 
 ---
 
