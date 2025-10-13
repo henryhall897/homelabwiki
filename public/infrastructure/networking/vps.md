@@ -2,7 +2,7 @@
 title: VPS (Virtual Private Server)
 description: Why incorporating a VPS is crucial to a homelab for public access
 published: true
-date: 2025-10-08T13:59:50.728Z
+date: 2025-10-13T15:30:34.247Z
 tags: overview, vps, networking
 editor: markdown
 dateCreated: 2025-10-08T02:53:25.900Z
@@ -86,10 +86,10 @@ flowchart TD
 * No privileged containers or direct LAN bridging
 * Automated updates and image scanning for vulnerabilities
 
-## Why Hetzner
-Hetzner is the chosen VPS provider for this setup due to its excellent performance-to-cost ratio, particularly for CPU-bound workloads such as game servers and self-hosted services.
+## Why [Hetzner](https://www.hetzner.com)
+[Hetzner](https://www.hetzner.com) is the chosen VPS provider for this setup due to its excellent performance-to-cost ratio, particularly for CPU-bound workloads such as game servers and self-hosted services.
 
-### Advantages of Hetzner for This Use Case
+### Advantages of [Hetzner](https://www.hetzner.com) for This Use Case
 * **Dedicated vCPU Performance**: Unlike many shared VPS providers, Hetzner Cloud instances deliver near-bare-metal CPU performance ideal for Factorio, Minecraft, and other simulation-heavy services.
 * **Affordable Pricing**: High-performance compute instances at a fraction of the cost of AWS or DigitalOcean — perfect for running both production web apps and game servers simultaneously.
 * **European Data Centers**: Strong network reliability and latency benefits for U.S.-East and Europe routes; ideal for globally accessible homelab services.
