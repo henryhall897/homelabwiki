@@ -2,7 +2,7 @@
 title: Wireguard Setup
 description: How to do initial wireguard setup
 published: true
-date: 2025-10-10T22:58:34.211Z
+date: 2025-10-13T11:38:12.319Z
 tags: wireguard, networking, setup
 editor: markdown
 dateCreated: 2025-10-10T15:28:50.620Z
@@ -94,7 +94,7 @@ sudo sysctl --system
 **Author Note**: With a headless setup, verify the tunnel works and SSH works through the wireguard tunnel before enabling firewall.
 * **RISK OF LOCKING YOUR SELF OUT** 
 
-For general firewall information click [here]()
+For general firewall information click [here](../firewall)
 ### 1. Allow WireGuard UDP port
 ```bash
 sudo ufw allow 51820/udp
