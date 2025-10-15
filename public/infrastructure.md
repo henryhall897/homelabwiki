@@ -2,7 +2,7 @@
 title: Infrastructure Overview
 description: Infrastructure of Homelab 
 published: true
-date: 2025-10-15T01:25:26.398Z
+date: 2025-10-15T01:25:46.413Z
 tags: overview, infrastructure, public
 editor: markdown
 dateCreated: 2025-10-13T15:38:31.112Z
@@ -56,7 +56,7 @@ It uses WireGuard VPN to form an encrypted overlay network connecting the VPS, c
 * [Firewall and traffic segmentation](./infrastructure/networking/firewall)
 * [DNS and domain management](./infrastructure/networking/dnsdomains)
 
-🔗 See [Networking Overview](/public/infrastructure/networking)
+> 🔗 See [Networking Overview](/public/infrastructure/networking)
 
 ## 4. Orchestration
 * The control layer responsible for deploying and managing workloads.
