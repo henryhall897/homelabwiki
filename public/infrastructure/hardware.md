@@ -2,7 +2,7 @@
 title: Hardware Overview
 description: Overview of the hardware used for this homelab
 published: true
-date: 2025-10-15T02:09:25.244Z
+date: 2025-10-15T23:12:11.444Z
 tags: overview, infrastructure, public, hardware
 editor: markdown
 dateCreated: 2025-10-15T01:55:54.965Z
@@ -35,8 +35,7 @@ The backbone of the homelab’s Kubernetes environment.
 
 The Raspberry Pi cluster provides a power-efficient and fully self-contained Kubernetes environment for testing and production services.
 
-🔗 See Cluster Architecture - todo
-
+> 🔗 See [Cluster Architecture](./hardware/pi-cluster)
 ### 2. Mini-PC Nodes
 Small-form-factor systems providing additional compute power for heavier workloads.
 * **Primary Mini PC** — Hosts game servers (Minecraft and Factorio), GitHub repos, and management scripts.
