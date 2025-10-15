@@ -2,7 +2,7 @@
 title: Public
 description: Links to the various public wiki articles
 published: true
-date: 2025-10-15T01:05:09.702Z
+date: 2025-10-15T01:19:39.822Z
 tags: index
 editor: markdown
 dateCreated: 2025-10-03T15:11:07.375Z
@@ -46,3 +46,6 @@ It serves both as a personal playground for experimentation and a production-lik
 - Harden with security policies (Kyverno, Trivy scans).
 - Add more automation with Ansible.
 - Explore NAS integration for backups.
+
+## What next?
+### [Public Wiki Articles](/public)
