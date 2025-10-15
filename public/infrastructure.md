@@ -2,7 +2,7 @@
 title: Infrastructure Overview
 description: Infrastructure of Homelab 
 published: true
-date: 2025-10-13T15:45:35.396Z
+date: 2025-10-15T01:09:37.032Z
 tags: overview, infrastructure, public
 editor: markdown
 dateCreated: 2025-10-13T15:38:31.112Z
@@ -45,7 +45,7 @@ Each node runs a *hardened, minimal Linux base* — primarily **Ubuntu Server** 
 
 🔗 See Operating Systems Overview - todo add article + link
 
-### 3. Networking
+### 3. [Networking](/public/infrastructure/networking)
 
 The **private communication backbone** that links all nodes and services.
 It uses WireGuard VPN to form an encrypted overlay network connecting the VPS, cluster nodes, and remote devices.
@@ -59,75 +59,53 @@ It uses WireGuard VPN to form an encrypted overlay network connecting the VPS, c
 
 🔗 See Networking Overview
 
-4. Orchestration
+## 4. Orchestration
+* The control layer responsible for deploying and managing workloads.
+* K3s — lightweight Kubernetes distribution optimized for edge nodes
+* Helm — templated deployments for repeatable, versioned applications
+* Traefik — ingress routing, HTTPS termination, and load balancing
+* Kyverno — policy enforcement and container hardening
 
-The control layer responsible for deploying and managing workloads.
+🔗 See Orchestration Overview - todo
 
-K3s — lightweight Kubernetes distribution optimized for edge nodes
+## 5. Storage
+* Persistent data management and backup systems ensuring reliability across restarts and node updates.
+* Components include:
+* Persistent volumes for databases and applications
+* External storage integration (e.g., NAS, Cloudflare R2)
+* Automated backup and sync mechanisms (rsync, RClone)
 
-Helm — templated deployments for repeatable, versioned applications
+🔗 See Storage Overview - todo
 
-Traefik — ingress routing, HTTPS termination, and load balancing
-
-Kyverno — policy enforcement and container hardening
-
-🔗 See Orchestration Overview
-
-5. Storage
-
-Persistent data management and backup systems ensuring reliability across restarts and node updates.
-
-Components include:
-
-Persistent volumes for databases and applications
-
-External storage integration (e.g., NAS, Cloudflare R2)
-
-Automated backup and sync mechanisms (rsync, RClone)
-
-🔗 See Storage Overview
-
-6. Automation
-
-Tools and scripts that enable reproducible setup and configuration across the entire homelab.
-
-Ansible for provisioning servers, WireGuard peers, and firewall rules
-
-Custom shell orchestrators for app-specific automation (e.g., Factorio, Minecraft)
-
-Plans for integration with GitHub Actions for CI/CD and updates
+## 6. Automation
+* Tools and scripts that enable reproducible setup and configuration across the entire homelab.
+* Ansible for provisioning servers, WireGuard peers, and firewall rules
+* Custom shell orchestrators for app-specific automation (e.g., Factorio, Minecraft)
+* Plans for integration with GitHub Actions for CI/CD and updates
 
 🔗 See Automation Overview
 
-7. Monitoring
-
-The observability layer that tracks system health, performance, and uptime.
-
-Node metrics (CPU, memory, disk usage)
-
-Centralized logging and alerting
-
-Future integration with Prometheus, Grafana, or Loki
+## 7. Monitoring
+* The observability layer that tracks system health, performance, and uptime.
+* Node metrics (CPU, memory, disk usage)
+* Centralized logging and alerting
+* Future integration with Prometheus, Grafana, or Loki
 
 🔗 See Monitoring Overview
 
-Security Considerations
+## Security Considerations
+* The infrastructure layer is built around a zero-trust model and enforces:
+* Non-root operation across all workloads
+* Read-only root filesystems and seccomp enforcement where possible
+* Network isolation via namespaces, subnets, and firewalls
+* Regular key rotation and access control reviews
+* Each component is designed to operate independently yet securely, forming a defense-in-depth architecture.
 
-The infrastructure layer is built around a zero-trust model and enforces:
-
-Non-root operation across all workloads
-
-Read-only root filesystems and seccomp enforcement where possible
-
-Network isolation via namespaces, subnets, and firewalls
-
-Regular key rotation and access control reviews
-
-Each component is designed to operate independently yet securely, forming a defense-in-depth architecture.
-
-Summary
+## Summary
 
 The homelab’s infrastructure integrates hardware, networking, orchestration, and automation into a modular, secure, and maintainable platform.
 Every layer — from WireGuard networking to Kubernetes orchestration — is built for transparency, reproducibility, and long-term scalability.
 
 As new components are added, they can seamlessly extend this foundation without compromising reliability or security.
+
+---
