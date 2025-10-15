@@ -2,7 +2,7 @@
 title: K3s Cluster Home Lab
 description: High level Overview
 published: true
-date: 2025-10-15T01:04:04.435Z
+date: 2025-10-15T01:04:31.845Z
 tags: overview, homelab, index, architecture, summary
 editor: markdown
 dateCreated: 2025-10-03T00:24:21.701Z
