@@ -2,7 +2,7 @@
 title: Hardware Overview
 description: Overview of the hardware used for this homelab
 published: true
-date: 2025-10-15T23:12:11.444Z
+date: 2025-10-16T03:56:13.728Z
 tags: overview, infrastructure, public, hardware
 editor: markdown
 dateCreated: 2025-10-15T01:55:54.965Z
@@ -38,12 +38,13 @@ The Raspberry Pi cluster provides a power-efficient and fully self-contained Kub
 > 🔗 See [Cluster Architecture](./hardware/pi-cluster)
 ### 2. Mini-PC Nodes
 Small-form-factor systems providing additional compute power for heavier workloads.
-* **Primary Mini PC** — Hosts game servers (Minecraft and Factorio), GitHub repos, and management scripts.
-* **Planned Upgrade** — A new mini PC to assume control-plane duties for production services, offloading the Raspberry Pis to be dedicated workers.
+* **Manager PC** — Hosts game servers (Minecraft and Factorio), GitHub repos, and management scripts.
+	* [Nucbox](https://www.amazon.com/GMKtec-G5-Business-Computer-Ethernet/dp/B0FQT44ZCJ/ref=sr_1_1?sr=8-1)
+* **Planned Upgrade** — A new mini PC to assume control-plane duties for production services, offloading the Raspberry Pis to be dedicated workers. 
+	* Most likely a Mini PC with Ryzen 5825U, 6800H, or higher
+	* Better for vertical scaling apps like game servers such as Minecraft or Factorio 
 
 This separation improves reliability, resource allocation, and makes upgrading or rebooting less disruptive.
-
-🔗 See Mini PC Setup - todo
 
 ### 3. Virtual Infrastructure (VPS)
 
@@ -56,14 +57,14 @@ Although not *physically owned*, the **Hetzner VPS** serves as a crucial hardwar
 
 Treat this as *virtual hardware*: it behaves like a remote physical node but is rented compute capacity rather than owned silicon.
 
-🔗 See VPS Gateway - todo
+> 🔗 See [VPS Gateway](./networking/vps)
 
 ### 4. Personal and Development Systems
 * **Devhost Workstation**: Used for local development, VS Code Remote sessions, and cluster orchestration.
 * **Laptop**: Used for remote work and access to services (e.g., Wiki.js UI and SSH sessions).
 These systems serve as interface nodes between the homelab infrastructure and end-user environments.
 
-🔗 See Development Workstation Setup - todo
+> 🔗 See [Development Workstation](./hardware/workstation)
 
 ### 5. Networking and Power Infrastructure
 
