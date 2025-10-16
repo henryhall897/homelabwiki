@@ -2,7 +2,7 @@
 title: Hardware Overview
 description: Overview of the hardware used for this homelab
 published: true
-date: 2025-10-16T03:56:13.728Z
+date: 2025-10-16T18:29:43.854Z
 tags: overview, infrastructure, public, hardware
 editor: markdown
 dateCreated: 2025-10-15T01:55:54.965Z
@@ -81,7 +81,7 @@ Previously tested for bridging Ethernet over coax, but deprecated due to:
 * Inconsistent throughput compared to direct Ethernet
 * Complexity in troubleshooting and routing loops
 
-🔗 See MoCA Adapters - todo 
+> 🔗 See [MoCA Adapters](/public/infrastructure/hardware/moca)
 ## Future Upgrades
 ### Planned Upgrade	Purpose
 * **New Mini PC Server**	Serve as primary control plane for heavier workloads and container hosting
