@@ -2,7 +2,7 @@
 title: Operating Systems
 description: Operating Systems used in homelab setup
 published: true
-date: 2025-10-17T01:43:04.031Z
+date: 2025-10-17T01:58:16.432Z
 tags: infrastructure, public, os
 editor: markdown
 dateCreated: 2025-10-17T01:43:04.031Z
@@ -31,7 +31,7 @@ It provides a stable, secure, and minimal Linux base optimized for long-term use
 * Automated unattended upgrades
 * SSH hardened (key-based auth only, disabled root login)
 
-🔗 See [Ubuntu Server Configuration — todo]
+🔗 See [Ubuntu Server Configuration](./os/ubuntu-server)
 
 ## 2. Personal and Interface Systems — Windows 11
 The primary workstation and gaming PC runs Windows 11, serving as the interface node for development and daily use.
