@@ -2,7 +2,7 @@
 title: Infrastructure Overview
 description: Infrastructure of Homelab 
 published: true
-date: 2025-10-17T01:29:43.205Z
+date: 2025-10-17T01:40:40.921Z
 tags: overview, infrastructure, public
 editor: markdown
 dateCreated: 2025-10-13T15:38:31.112Z
@@ -22,7 +22,7 @@ dateCreated: 2025-10-13T15:38:31.112Z
 * Enable automation and observability across all components
 
 ## Core Components
-### 1. Hardware
+### 1. [Hardware](/public/infrastructure/hardware)
 The **physical backbone** of the homelab, spanning local and remote nodes:
 
 * Raspberry Pi cluster (control-plane and worker nodes)
