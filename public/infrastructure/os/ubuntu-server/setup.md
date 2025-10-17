@@ -2,7 +2,7 @@
 title: Ubuntu Server 24 LTS Setup
 description: Baseline Fresh Ubuntu Setup for homelab node
 published: true
-date: 2025-10-17T14:57:30.843Z
+date: 2025-10-17T16:16:59.991Z
 tags: setup, infrastructure, public, os, ubuntu-server
 editor: markdown
 dateCreated: 2025-10-17T02:10:32.312Z
@@ -37,27 +37,9 @@ All nodes—whether control plane, worker, or utility—follow the same minimal 
 During setup, choose Minimal install to avoid unnecessary packages and GUI components.
 Do not install third-party drivers or snaps at this stage.
 
-### Create Non-Root User
-Define a username such as dev or clusteradmin.
-
-Assign a strong password (temporary; will disable password auth later).
-
-Ensure “Allow this user to administer the system” is checked to grant sudo.
-
-Enable OpenSSH Server
-When prompted, select Install OpenSSH Server to allow remote management after setup.
-
-Set Hostname
-Use a consistent naming scheme:
-
-cluster1     → Control Plane
-devnode2     → Worker Node
-ansible      → Automation Node
-
-
 This naming convention simplifies Ansible inventory and WireGuard peer management.
 
-3. Post-Installation Configuration
+## 3. Post-Installation Configuration
 
 After the first boot, log in locally or via SSH and perform the following setup:
 
