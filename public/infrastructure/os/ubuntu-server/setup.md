@@ -2,7 +2,7 @@
 title: Ubuntu Server 24 LTS Setup
 description: Baseline Fresh Ubuntu Setup for homelab node
 published: true
-date: 2025-10-17T16:18:27.748Z
+date: 2025-10-17T16:31:47.024Z
 tags: setup, infrastructure, public, os, ubuntu-server
 editor: markdown
 dateCreated: 2025-10-17T02:10:32.312Z
@@ -25,11 +25,7 @@ All nodes—whether control plane, worker, or utility—follow the same minimal 
 
 ### Have access to:
 * A laptop or PC or any computer that can SSH to new machine
-	* Raspberry PI Imager lets a user be created, SSH Enabled, and Keys added 
-* SSH key pair (public key ready to import)
 * Network information (static IP, gateway, DNS)
-* WireGuard peer configuration (if applicable)
-	* See [Wireguard Setup](/public/infrastructure/networking/wireguard/setup)
 
 ## 2. Installation
 
@@ -40,140 +36,94 @@ Do not install third-party drivers or snaps at this stage.
 This naming convention simplifies Ansible inventory and WireGuard peer management.
 
 ## 3. Post-Installation Configuration
-
-After the first boot, log in locally or via SSH and perform the following setup:
-
-3.1 System Update
+After the first boot, log in locally or via SSH
+### SSH
+```bash
+ssh example@example.local
+```
+**OR**
+```bash
+ssh example@<node-ip>
+```
+Then perform the following:
+### 3.1 System Update
+```bash
 sudo apt update && sudo apt full-upgrade -y
-
-3.2 Enable Unattended Security Updates
+```
+### 3.2 Enable Unattended Security Updates
+```bash
 sudo apt install unattended-upgrades -y
 sudo dpkg-reconfigure --priority=low unattended-upgrades
+```
 
-3.3 Configure SSH
+### 3.3 Configure SSH
+```bash
 sudo nano /etc/ssh/sshd_config
+```
+#### Ensure the following options are set:
 
-
-Ensure the following options are set:
-
+```bash
 PermitRootLogin no
 PasswordAuthentication no
 PubkeyAuthentication yes
+```
 
-
-Restart SSH:
-
+#### Restart SSH:
+```bash
 sudo systemctl restart ssh
+```
+### 3.4 Configure Firewall (UFW)
 
-3.4 Configure Firewall (UFW)
+```bash
 sudo apt install ufw -y
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow 22/tcp
 sudo ufw enable
 sudo ufw status verbose
+```
 
-3.5 Add SSH Public Key
-
-From your workstation:
-
-ssh-copy-id dev@<node-ip>
-
-
-Or manually append your key to:
-
-~/.ssh/authorized_keys
-
-4. Network Configuration
-4.1 Static IP (Optional if Using DHCP Reservation)
-
-Edit the Netplan configuration file:
-
-sudo nano /etc/netplan/50-cloud-init.yaml
-
-
-Example:
-
-network:
-  version: 2
-  ethernets:
-    eth0:
-      addresses:
-        - 192.168.1.20/24
-      routes:
-        - to: default
-          via: 192.168.1.1
-      nameservers:
-        addresses: [1.1.1.1, 8.8.8.8]
-
-
-Apply changes:
-
-sudo netplan apply
-
-4.2 WireGuard Tunnel
-
-If the node connects via VPN:
-
-sudo apt install wireguard -y
-sudo wg genkey | tee private.key | wg pubkey > public.key
-sudo mv private.key /etc/wireguard/keys/
-sudo mv public.key /etc/wireguard/keys/
-sudo chmod 600 /etc/wireguard/keys/private.key
-
-
-Create /etc/wireguard/wg0.conf based on your cluster’s template.
-🔗 See [WireGuard Setup — todo]
-
-5. Core Tools and Utilities
-
-Install essential maintenance and monitoring packages:
-
+## 4. Core Tools and Utilities
+### Install essential maintenance and monitoring packages:
+```bash
 sudo apt install -y curl git fail2ban htop net-tools jq
+```
 
-
-Optional (depending on role):
-
+### Optional (depending on role):
+```bash
 sudo apt install docker.io -y
 sudo systemctl enable docker
-
-6. Validation
-
+```
+## 5. Validation
 Run quick system checks to confirm baseline compliance:
 
-# Verify UFW
+### Verify UFW
+```bash
 sudo ufw status
-
-# Confirm root login disabled
+```
+### Confirm root login disabled
+```bash
 sudo grep "PermitRootLogin" /etc/ssh/sshd_config
-
-# Test unattended-upgrades
+```
+### Test unattended-upgrades
+```bash
 sudo systemctl status unattended-upgrades
+```
 
-# Confirm WireGuard status
-sudo systemctl status wg-quick@wg0
+## 7. Snapshot and Add to Cluster
+### Once validated:
+1. Create a snapshot or SD backup of the clean node image for reuse.
+2. Join to the cluster using your K3s installation or Ansible automation.
 
-7. Snapshot and Add to Cluster
-
-Once validated:
-
-Create a snapshot or SD backup of the clean node image for reuse.
-
-Join to the cluster using your K3s installation or Ansible automation.
-
-🔗 See [K3s Node Join Procedure — todo]
+> 🔗 See [K3s Node Join Procedure — todo]
 🔗 See [Ansible Automation Overview — todo]
 
-Summary
-
-The Cluster Node Setup ensures each Ubuntu Server instance is:
-
-Minimal — no unneeded packages
-
-Secure — non-root, UFW, SSH key-only
-
-Consistent — uniform configuration across all nodes
-
-Ready for Automation — easily managed through Ansible and WireGuard
+## Summary
+* The Cluster Node Setup ensures each Ubuntu Server instance is:
+* Minimal — no unneeded packages
+* Secure — non-root, UFW, SSH key-only
+* Consistent — uniform configuration across all nodes
 
 This standardization guarantees reliability, simplicity, and security throughout the homelab infrastructure.
+
+> This is a good baseline. Next Step would be [Wireguard Integration](/public/infrastructure/networking/wireguard)
