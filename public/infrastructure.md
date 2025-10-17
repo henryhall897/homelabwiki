@@ -2,7 +2,7 @@
 title: Infrastructure Overview
 description: Infrastructure of Homelab 
 published: true
-date: 2025-10-15T01:25:46.413Z
+date: 2025-10-17T01:29:43.205Z
 tags: overview, infrastructure, public
 editor: markdown
 dateCreated: 2025-10-13T15:38:31.112Z
@@ -32,7 +32,7 @@ The **physical backbone** of the homelab, spanning local and remote nodes:
 
 Network devices such as routers, MoCA adapters, and managed switches
 
-🔗 See Hardware Overview - todo add link
+> 🔗 See [Hardware Overview](/public/infrastructure/hardware)
 
 ### 2. Operating Systems
 
