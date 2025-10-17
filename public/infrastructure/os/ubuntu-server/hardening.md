@@ -2,7 +2,7 @@
 title: Ubuntu-Server Hardening Steps
 description: Best Security practices to follow on a new ubuntu server install
 published: true
-date: 2025-10-17T22:43:57.203Z
+date: 2025-10-17T22:47:51.003Z
 tags: overview, infrastructure, public, os, ubuntu-server, hardening
 editor: markdown
 dateCreated: 2025-10-17T20:59:24.742Z
@@ -40,13 +40,13 @@ The Uncomplicated Firewall (UFW) enforces a default deny policy on all nodes, pe
 * Apply host-specific rules for control-plane vs worker nodes
 * Verify persistent enablement across reboots
 
-> See Firewall Configuration (UFW)
+> [See Firewall Configuration (UFW)](/public/infrastructure/os/ubuntu-server/hardening/firewall)
 
 ### Wireguard
 After Configuring a baseline Firewall, it is a good time to integrate wireguard and move ssh over to wireguard only. 
 * Deny Regular SSH and only allow SSH over Wireguard VPN
 
-> See [Wireguard Integration](/public/infrastructure/networking/wireguard)
+> [See Wireguard Integration](/public/infrastructure/networking/wireguard)
 
 ## 4. Kernel & Sysctl Hardening
 
