@@ -2,7 +2,7 @@
 title: Ubuntu-Server Hardening Steps
 description: Best Security practices to follow on a new ubuntu server install
 published: true
-date: 2025-10-17T21:11:32.935Z
+date: 2025-10-17T22:43:57.203Z
 tags: overview, infrastructure, public, os, ubuntu-server, hardening
 editor: markdown
 dateCreated: 2025-10-17T20:59:24.742Z
@@ -28,19 +28,7 @@ This reduces the impact of misconfiguration or compromise and aligns with Kubern
 * Restrict sudo usage to administrative accounts
 * Verify all services use restricted User= directives (for systemd)
 
-> 🔗 See Least Privilege & Non-Root Operation
-
-## 2. SSH Hardening
-
-SSH is the primary remote management interface and must be secured against unauthorized access.
-
-### Key Actions
-* Disable root login (PermitRootLogin no)
-* Disable password authentication (PasswordAuthentication no)
-* Enable public key authentication only
-* Configure and enable fail2ban to block repeated login attempts
-
-> See SSH Hardening
+> [See Least Privilege & Non-Root Operation](/public/infrastructure/os/ubuntu-server/hardening/nonroot) 
 
 ## 3. Firewall (UFW)
 
