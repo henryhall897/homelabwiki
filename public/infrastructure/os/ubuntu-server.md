@@ -2,7 +2,7 @@
 title: Ubuntu Server 24 LTS Overview
 description: Overview of how Ubuntu Server is used in the home lab 
 published: true
-date: 2025-10-17T21:12:26.035Z
+date: 2025-10-17T21:13:27.471Z
 tags: overview, infrastructure, public, os, ubuntu-server
 editor: markdown
 dateCreated: 2025-10-17T01:54:18.665Z
@@ -36,10 +36,6 @@ Each node is installed with a minimal image to reduce resource usage and attack 
 * Select Minimal Installation (no desktop environment)
 * Create a non-root user with sudo privileges
 * Enable OpenSSH for remote access
-* Configure static IP or WireGuard tunnel
-* Disable password authentication (SSH keys only)
-* Apply automatic security updates
-* Install core tooling: curl, git, ufw, fail2ban, htop, etc.
 
 > 🔗 See [Ubuntu Server Setup](/public/infrastructure/os/ubuntu-server/setup)
 
