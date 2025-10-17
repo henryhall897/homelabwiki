@@ -2,7 +2,7 @@
 title: Flash a USB drive with PI Imager for Headless Setup of Ubuntu Server
 description: Instructions on how to setup a flash drive for a Ubuntu Server headless setup
 published: true
-date: 2025-10-17T15:33:10.885Z
+date: 2025-10-17T16:13:53.724Z
 tags: setup, infrastructure, public, os, ubuntu-server
 editor: markdown
 dateCreated: 2025-10-17T15:33:10.885Z
@@ -53,34 +53,10 @@ If key pair needs to be generated, then [generate keypair]()
 8. Paste your public SSH key
 9. Click Save → then Next → Write.
 
-## 4. First Boot Behavior
-### When the device starts:
-* Cloud-init applies all these settings automatically.
-* SSH is active immediately on first boot.
-### You can connect from your workstation:
-#### Example using Name
-```bash
-ssh example@example.local
-```
-
-#### Example via the assigned static IP.
-```bash
-ssh example@<node-ip>
-```
-
-## 5. Verification
-### After boot:
-```bash
-ssh example@<node-ip>
-hostname
-sudo systemctl status ssh
-```
-
-### Confirm that:
-* You can connect with your key
-* Hostname and timezone match what you configured
-
 ## Summary
 
 Raspberry Pi Imager’s advanced settings let you automate first-boot provisioning without touching a keyboard.
 It’s the simplest and most reproducible way to prepare new nodes for your homelab’s cluster environment.
+
+## Finishing First time install
+Return to [setup](/public/infrastructure/os/ubuntu-server/setup)
