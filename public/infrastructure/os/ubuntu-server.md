@@ -2,7 +2,7 @@
 title: Ubuntu Server 24 LTS Overview
 description: Overview of how Ubuntu Server is used in the home lab 
 published: true
-date: 2025-10-17T21:08:21.402Z
+date: 2025-10-17T21:12:26.035Z
 tags: overview, infrastructure, public, os, ubuntu-server
 editor: markdown
 dateCreated: 2025-10-17T01:54:18.665Z
@@ -41,7 +41,7 @@ Each node is installed with a minimal image to reduce resource usage and attack 
 * Apply automatic security updates
 * Install core tooling: curl, git, ufw, fail2ban, htop, etc.
 
-> 🔗 See [setup](/public/infrastructure/os/ubuntu-server/setup)
+> 🔗 See [Ubuntu Server Setup](/public/infrastructure/os/ubuntu-server/setup)
 
 ## 3. Security and Hardening Practices
 
