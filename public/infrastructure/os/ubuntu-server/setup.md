@@ -2,7 +2,7 @@
 title: Ubuntu Server 24 LTS Setup
 description: Baseline Fresh Ubuntu Setup for homelab node
 published: true
-date: 2025-10-17T02:25:40.740Z
+date: 2025-10-17T14:57:30.843Z
 tags: setup, infrastructure, public, os, ubuntu-server
 editor: markdown
 dateCreated: 2025-10-17T02:10:32.312Z
@@ -20,6 +20,8 @@ All nodes—whether control plane, worker, or utility—follow the same minimal 
 * Download [Ubuntu Server 24.04 LTS (64-bit) image.](https://ubuntu.com/download/server)
 * [Micro SD card](https://www.amazon.com/uni-Reader-Adapter-Aluminum-Memory/dp/B087QG75L7/ref=sr_1_1_sspa?s=electronics&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY) or [USB Drive](https://www.amazon.com/dp/B09RG1TNM7) to store bootable image on
 * [Raspberry PI Imager](https://www.raspberrypi.com/software) for flashing to the USB Drive or SD card
+
+> Pre Install Setup - todo
 
 ### Have access to:
 * A laptop or PC or any computer that can SSH to new machine
