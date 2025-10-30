@@ -2,7 +2,7 @@
 title: MoCA Adapters (Deprecated Experiment)
 description: Why MoCA are suboptimal for a home lab setup
 published: true
-date: 2025-10-30T14:36:39.086Z
+date: 2025-10-30T14:40:09.175Z
 tags: public, infrastructure, hardware, moca
 editor: markdown
 dateCreated: 2025-10-19T17:03:34.924Z
@@ -49,7 +49,23 @@ flowchart LR
     end
 ```
 #### Description of chart
-Computer 
+Computer connected via MoCA 1 receive from the router and respond, then has to wait for MoCA 2 and MoCA 3 to receive and respond before it can use the shared loop again. If multple devices are connected on each MoCA, the problem is made even worse
+
+### Regular Ethernet Comparison
+```mermaid
+flowchart TB
+    subgraph Ethernet_Network["Ethernet Switched Network"]
+        direction TB
+        SW["Network Switch"]
+        E1["PC (Living Room)"]
+        E2["Server (Office)"]
+        E3["Smart TV (Upstairs)"]
+
+        SW <--> E1
+        SW <--> E2
+        SW <--> E3
+    end
+```
 ## When It Might Still Be Acceptable
 A single-device bridge (e.g., connecting a smart TV or one PC to the router) can work reliably if the coax path is short and isolated.
 
