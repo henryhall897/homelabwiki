@@ -2,13 +2,17 @@
 title: Wireguard Commands
 description: A list of all Wireguard commands
 published: true
-date: 2025-10-10T22:57:24.425Z
-tags: wireguard, networking, infrastructure, public, commands
+date: 2025-10-30T15:08:18.219Z
+tags: public, infrastructure, networking, wireguard, commands
 editor: markdown
-dateCreated: 2025-10-10T22:54:20.183Z
+dateCreated: 2025-10-19T17:05:39.959Z
 ---
 
 # WireGuard Commands (Ubuntu) — Cheat Sheet
+[Overview](/public/infrastructure/networking/wireguard) - [Setup](/public/infrastructure/networking/wireguard/setup) - [Troubleshooting](/public/infrastructure/networking/wireguard/troubleshooting) - [Commands](/public/infrastructure/networking/wireguard/commands)
+
+---
+
 Works with Ubuntu 22.04+. Replace wg0 with your interface name.
 
 ## Install & files
