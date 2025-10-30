@@ -2,7 +2,7 @@
 title: MoCA Adapters (Deprecated Experiment)
 description: Why MoCA are suboptimal for a home lab setup
 published: true
-date: 2025-10-30T14:40:09.175Z
+date: 2025-10-30T14:46:13.226Z
 tags: public, infrastructure, hardware, moca
 editor: markdown
 dateCreated: 2025-10-19T17:03:34.924Z
@@ -35,7 +35,7 @@ Unlike Ethernet, coax networks can hide loops and signal reflections that are di
 ### Visual Example
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph MoCA_Network["MoCA Shared Coax Network"]
         R["Router / Modem"]
         S["Coax Splitter / Shared Bus"]
@@ -55,17 +55,20 @@ Computer connected via MoCA 1 receive from the router and respond, then has to w
 ```mermaid
 flowchart TB
     subgraph Ethernet_Network["Ethernet Switched Network"]
-        direction TB
+    		R["Router"]
         SW["Network Switch"]
         E1["PC (Living Room)"]
         E2["Server (Office)"]
         E3["Smart TV (Upstairs)"]
-
+				R <--> SW
         SW <--> E1
         SW <--> E2
         SW <--> E3
     end
 ```
+
+#### Description of Chart
+While it looks similar, because physically it is, the main difference is that the switch matches sender/receiver pairs by switch port. All device signals can be sent simultaneously and there is no pakcet loss. running an ethernet cable in the house is better than utilizing exisitng coaxial connectors for a stable homelab or multiple device. 
 ## When It Might Still Be Acceptable
 A single-device bridge (e.g., connecting a smart TV or one PC to the router) can work reliably if the coax path is short and isolated.
 
