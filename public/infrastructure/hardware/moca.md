@@ -2,7 +2,7 @@
 title: MoCA Adapters (Deprecated Experiment)
 description: Why MoCA are suboptimal for a home lab setup
 published: true
-date: 2025-10-30T14:25:40.742Z
+date: 2025-10-30T14:36:39.086Z
 tags: public, infrastructure, hardware, moca
 editor: markdown
 dateCreated: 2025-10-19T17:03:34.924Z
@@ -34,7 +34,22 @@ Unlike Ethernet, coax networks can hide loops and signal reflections that are di
 
 ### Visual Example
 
-
+```mermaid
+flowchart LR
+    subgraph MoCA_Network["MoCA Shared Coax Network"]
+        R["Router / Modem"]
+        S["Coax Splitter / Shared Bus"]
+        A1["MoCA 1"]
+        A2["MoCA 2"]
+        A3["MoCA 3"]
+        R <--> S
+        S <--> A1
+        S <--> A2
+        S <--> A3
+    end
+```
+#### Description of chart
+Computer 
 ## When It Might Still Be Acceptable
 A single-device bridge (e.g., connecting a smart TV or one PC to the router) can work reliably if the coax path is short and isolated.
 
