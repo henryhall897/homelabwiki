@@ -2,10 +2,10 @@
 title: Wireguard Setup
 description: How to do initial wireguard setup
 published: true
-date: 2025-10-13T11:38:12.319Z
-tags: wireguard, networking, setup
+date: 2025-10-30T14:56:36.910Z
+tags: networking, wireguard, setup
 editor: markdown
-dateCreated: 2025-10-10T15:28:50.620Z
+dateCreated: 2025-10-19T17:05:54.496Z
 ---
 
 # WireGuard Setup (Ubuntu)
@@ -99,6 +99,10 @@ For general firewall information click [here](../firewall)
 ```bash
 sudo ufw allow 51820/udp
 ```
+#### To be more strict, it is possible to require from certain ips (like your specific public IP)
+```bash
+sudo ufw allow from <your_public_ip> to any port 51820 proto udp
+```
 ### 2. Allow forwarding within the WG subnet
 This is helpful when trying to follow least privilege security practices. Only explicitly defined forwarding routes can happen. 
 #### Example: Allow Peer1(10.100.0.2) and Peer2(10.100.0.3) to reach 10.100.0.4
@@ -156,7 +160,7 @@ PersistentKeepalive = 25
  
 ### Full Example Config Files
 Following diagram example above:
-#### Hub (VPS) - listener
+#### Hub (VPS) - listener and hub
 ```bash
 [Interface]
 Address = 10.100.0.1/32
@@ -202,9 +206,10 @@ ListenPort = 51820
 [Peer]
 PublicKey = <peer 1 pub key>
 PresharedKey = <peer 3 to vps preshared key (psk)>
-# Peer 3 does not need to allow peer 2 unless peer 2 is
-# sending info to peer 3
-AllowedIPs = 10.100.0.1/32
+# Peer 3 can specify all nodes or allow everything to make adding new nodes easier.
+# here, all nodes are allowed for convenience of wireguard on the user interface side. 
+# just need to configure spokes to allow the user interface
+AllowedIPs = 10.100.0.0/24
 Endpoint = hubip:51820
 PersistentKeepalive = 25
 ```
