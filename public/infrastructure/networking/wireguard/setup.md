@@ -2,13 +2,16 @@
 title: Wireguard Setup
 description: How to do initial wireguard setup
 published: true
-date: 2025-10-30T14:56:36.910Z
+date: 2025-10-30T15:06:21.691Z
 tags: networking, wireguard, setup
 editor: markdown
 dateCreated: 2025-10-19T17:05:54.496Z
 ---
 
 # WireGuard Setup (Ubuntu)
+[Overview](/public/infrastructure/networking/wireguard) - [Setup](/public/infrastructure/networking/wireguard/setup) - [Troubleshooting](/public/infrastructure/networking/wireguard/troubleshooting) - [Commands](/public/infrastructure/networking/wireguard/commands)
+
+---
 
 **Scope**: Ubuntu 22.04+ on a VPS (listener/server) and one or more peers (laptops, home nodes, etc.).
 **Goal**: install WireGuard, generate keys (including an optional preshared key), pick your listener, and bring up your first tunnel with tight endpoint + routing controls.
