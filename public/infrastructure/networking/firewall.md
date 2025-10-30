@@ -2,10 +2,10 @@
 title: Firewall
 description: How the firewall enforces best security practices in conjunction with the VPN and VPS
 published: true
-date: 2025-10-08T14:06:12.332Z
-tags: overview, firewall, networking
+date: 2025-10-30T15:13:17.164Z
+tags: overview, networking, firewall
 editor: markdown
-dateCreated: 2025-10-08T13:49:15.948Z
+dateCreated: 2025-10-19T17:04:37.979Z
 ---
 
 # Firewall
@@ -24,16 +24,16 @@ The firewall layer is a critical security boundary within the homelab network. I
 ```mermaid
 %%{init: {'themeVariables': { 'fontSize': '14px', 'fontFamily': 'monospace' }}}%%
 flowchart TD
-  A["🌐 Internet<br/>Public traffic<br/><br/>"]
-  B["🧭 VPS Gateway<br/>Firewall (Cloud Level)<br/>WireGuard Entry Point<br/><br/>"]
-  C["🔒 WireGuard Tunnel<br/>Encrypted Channel<br/><br/>"]
-  D["🏠 Home Firewall<br/>Edge Enforcement<br/>UFW / nftables<br/><br/>"]
-  E["🧩 K3s Cluster<br/>Internal NetworkPolicies<br/><br/>"]
+  A["Internet<br/>Public traffic<br/><br/>"]
+  B["VPS Gateway<br/>Firewall (Cloud Level)<br/>WireGuard Entry Point<br/><br/>"]
+  C["WireGuard Tunnel<br/>Encrypted Channel<br/><br/>"]
+  D["Home Firewall<br/>Edge Enforcement<br/>UFW / nftables<br/><br/>"]
+  E["K3s Cluster<br/>Internal NetworkPolicies<br/><br/>"]
 
-  A -->|"Public HTTPS / WireGuard"| B
-  B -->|"Allowed peers only"| C
-  C -->|"VPN-encrypted traffic"| D
-  D -->|"Validated routes only"| E
+  A -->|"Public HTTPS / WireGuard\n\n"| B
+  B -->|"Allowed peers only\n\n"| C
+  C -->|"VPN-encrypted traffic\n\n"| D
+  D -->|"Validated routes only\n\n"| E
 ```
 ### All network paths follow a “VPN-first” policy:
 no traffic enters the homelab from the public internet without first traversing the WireGuard-encrypted channel that connects the VPS and home servers.
