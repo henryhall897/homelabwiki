@@ -2,10 +2,10 @@
 title: Flash a USB drive with PI Imager for Headless Setup of Ubuntu Server
 description: Instructions on how to setup a flash drive for a Ubuntu Server headless setup
 published: true
-date: 2025-10-17T16:16:18.543Z
-tags: setup, infrastructure, public, os, ubuntu-server
+date: 2025-10-31T23:09:08.810Z
+tags: public, infrastructure, os, ubuntu-server, setup
 editor: markdown
-dateCreated: 2025-10-17T15:33:10.885Z
+dateCreated: 2025-10-19T17:06:29.350Z
 ---
 
 # Flashing Ubuntu Server with Raspberry Pi Imager — Headless Setup
@@ -25,7 +25,7 @@ You’ll end up with an image that boots, joins the network, and is ready for SS
 2. **Choose OS**: Ubuntu Server 24.04 LTS (64-bit)
 3. **Choose Storage**: your USB or SD card
 ### Example
-![rppiimager.png](/images/pimgr/rppiimager.png)
+![rppiimager.png](/assets/images/pimgr/rppiimager.png)
 
 ---
 
@@ -33,7 +33,7 @@ You’ll end up with an image that boots, joins the network, and is ready for SS
 1. Press **Next**
 2. Press **EDIT SETTINGS**
 ### Example
-![advancedimageroptions.png](/images/pimgr/advancedimageroptions.png)
+![advancedimageroptions.png](/assets/images/pimgr/advancedimageroptions.png)
 
 ---
 
@@ -44,7 +44,7 @@ You’ll end up with an image that boots, joins the network, and is ready for SS
 	* [Bitwarden](https://bitwarden.com) is a solid password manager. Can Generate strong passwords and allow users to copy paste when needed. 
   
 #### Example: 
-![exampleconfig.png](/images/pimgr/exampleconfig.png)
+![exampleconfig.png](/assets/images/pimgr/exampleconfig.png)
 
 Homelab uses ethernet cabling. If Device is wireless, **configure wireless LAN**
 ### Services Settings:
@@ -56,7 +56,7 @@ If key pair needs to be generated, then [generate keypair]()
 8. Paste your **public** SSH key
 9. Click Save → then Next → Write.
 #### Example:
-![oscustomize.png](/images/pimgr/oscustomize.png)
+![oscustomize.png](/assets/images/pimgr/oscustomize.png)
 ## Summary
 
 Raspberry Pi Imager’s advanced settings let you automate first-boot provisioning without touching a keyboard.
