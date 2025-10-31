@@ -1,11 +1,11 @@
 ---
 title: Infrastructure Overview
-description: Infrastructure of Homelab 
+description: Infrastructure of Homelab
 published: true
-date: 2025-10-17T01:40:40.921Z
-tags: overview, infrastructure, public
+date: 2025-10-31T22:25:47.286Z
+tags: overview, public, infrastructure
 editor: markdown
-dateCreated: 2025-10-13T15:38:31.112Z
+dateCreated: 2025-10-19T17:02:33.468Z
 ---
 
 # Infrastructure Overview
@@ -37,6 +37,7 @@ Network devices such as routers, MoCA adapters, and managed switches
 ### 2. Operating Systems
 
 Each node runs a *hardened, minimal Linux base* — primarily **Ubuntu Server** — configured for reliability and low resource overhead.
+> 🔗 See [Operating Systems](/public/infrastructure/os)
 
 #### Key configurations include:
 * Non-root operation and least-privilege user roles
