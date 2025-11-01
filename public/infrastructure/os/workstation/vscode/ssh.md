@@ -2,7 +2,7 @@
 title: SSH Hosts With Vscode
 description: How to Set up SSH Hosts With Vscode
 published: true
-date: 2025-11-01T15:57:44.528Z
+date: 2025-11-01T16:00:17.740Z
 tags: public, infrastructure, os, workstation, vscode, ssh
 editor: markdown
 dateCreated: 2025-11-01T15:42:18.510Z
@@ -45,7 +45,8 @@ Linux/macOS: ~/.ssh/
 ### 2.3 Search for “Remote - SSH”.
 ### 2.4 Install Remote - SSH (by Microsoft).
 (Optional) Also install Remote - SSH: Editing Configuration Files — this makes editing ssh_config easier.
-
+### Example
+![extensionbutton.png](/assets/images/vscode/extensionbutton.png)![sshextensions.png](/assets/images/vscode/sshextensions.png)
 This adds a new icon on the left sidebar called Remote Explorer.
 
 ## 3. Create or Edit Your SSH Config
@@ -104,7 +105,8 @@ Host utility-box
 ### 4.1 Click Bottom left on the Remote Connection ICON
 ### 4.2 Click Connect to Host 
 You should see the hosts you added (devnode1, k3s-worker1, etc.).
-
+### Example
+![remotedesktop.png](/assets/images/vscode/remotedesktop.png)
 ### 4.3 Click the one you want.
 * VS Code will open a new window and try to SSH in.
 * The first time, VS Code will install its remote server on the node — this is normal.
