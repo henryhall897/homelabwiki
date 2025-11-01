@@ -2,7 +2,7 @@
 title: Ubuntu Server 24 LTS Setup
 description: Baseline Fresh Ubuntu Setup for homelab node
 published: true
-date: 2025-11-01T16:50:18.181Z
+date: 2025-11-01T17:21:55.967Z
 tags: public, infrastructure, os, ubuntu-server, setup
 editor: markdown
 dateCreated: 2025-10-19T17:07:00.119Z
@@ -28,15 +28,13 @@ This guide contains PI specific and regular ubuntu installs.
 #### Have access to:
 * A laptop or PC or any computer that can SSH to new machine
 * Network information (static IP, gateway, DNS)
-#### If Flashing a regular device, follow this guide:
+
+## 2. Flash The Drive
+### If Flashing a regular device, follow this guide:
 > [How To Flash with Rufus](/public/infrastructure/os/ubuntu-server/rufus)
-#### If flashing a Raspberry PI, Follow this guide:
+### If flashing a Raspberry PI, Follow this guide:
 > [How To Flash a USB/MicroSD with Pi Imager](/public/infrastructure/os/ubuntu-server/flashusb)
-
-
-
-
-## 2. If Not completed already in previous two guides above, set up vscode on remote user interface
+### 2.1 If Not completed already in previous two guides above, set up vscode on remote user interface
 > [How to set up Remote Desktop for VScode](/public/infrastructure/os/workstation/vscode/ssh)
 
 ## 3. Connect via Terminal or Vscode
