@@ -2,7 +2,7 @@
 title: Flashing a Drive with Rufus 
 description: Steps to flash a new OS with ubuntu server with rufus and setting up ssh. 
 published: true
-date: 2025-11-01T15:35:30.815Z
+date: 2025-11-01T16:05:42.174Z
 tags: public, infrastructure, os, ubuntu-server, rufus
 editor: markdown
 dateCreated: 2025-11-01T15:07:26.541Z
@@ -100,15 +100,16 @@ If not, re-run the start command.
 By default, Ubuntu enables password logins.
 the password is the password set for the account created on install
 ## 5. Set up SSH hosts For Remote Desktop in vscode
+> For more information, see [SSH Hosts for Remote Desktop: vscode](/public/infrastructure/os/workstation/vscode/ssh)
 
-# Example
-### Template
+### Terminal based (CMD/Powershell or Linux Terminal)
+#### Example Template
 ```bash
 ssh <yourusername>@<hostip>
 #or
 ssh <yourusername>@<yourhostname>
 ```
-### Filled out
+#### Filled out
 * **username**: dev
 * **ip**: 192.154.0.16
 * **hostname**: devmachine
@@ -119,4 +120,4 @@ ssh dev@devmachine.lcoal
 ```
 
 If connection succeeds, you have completed the Rufus flash and initial installation steps.
-You can now continue to the next section of the documentation:
+You can now continue to the next section of the documentation: [
