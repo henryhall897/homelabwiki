@@ -2,10 +2,10 @@
 title: Ubuntu Server 24 LTS Setup
 description: Baseline Fresh Ubuntu Setup for homelab node
 published: true
-date: 2025-10-17T16:31:47.024Z
-tags: setup, infrastructure, public, os, ubuntu-server
+date: 2025-11-01T15:31:21.910Z
+tags: public, infrastructure, os, ubuntu-server, setup
 editor: markdown
-dateCreated: 2025-10-17T02:10:32.312Z
+dateCreated: 2025-10-19T17:07:00.119Z
 ---
 
 # Cluster Node Setup
@@ -20,8 +20,10 @@ All nodes—whether control plane, worker, or utility—follow the same minimal 
 * Download [Ubuntu Server 24.04 LTS (64-bit) image.](https://ubuntu.com/download/server)
 * [Micro SD card](https://www.amazon.com/uni-Reader-Adapter-Aluminum-Memory/dp/B087QG75L7/ref=sr_1_1_sspa?s=electronics&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY) or [USB Drive](https://www.amazon.com/dp/B09RG1TNM7) to store bootable image on
 * [Raspberry PI Imager](https://www.raspberrypi.com/software) for flashing to the USB Drive or SD card
-
+#### If flashing a Raspberry PI, Follow this guide:
 > [How To Flash a USB/MicroSD with Pi Imager](/public/infrastructure/os/ubuntu-server/flashusb)
+#### If Flashing a regular device, follow this guide:
+> [How To Flash with Rufus](/public/infrastructure/os/ubuntu-server/rufus)
 
 ### Have access to:
 * A laptop or PC or any computer that can SSH to new machine
