@@ -2,7 +2,7 @@
 title: SSH Hosts With Vscode
 description: How to Set up SSH Hosts With Vscode
 published: true
-date: 2025-11-01T16:00:17.740Z
+date: 2025-11-01T16:09:31.796Z
 tags: public, infrastructure, os, workstation, vscode, ssh
 editor: markdown
 dateCreated: 2025-11-01T15:42:18.510Z
@@ -143,3 +143,6 @@ You can forward it to your local machine right from VS Code:
 ### 7.1 Open Command Palette → Remote-SSH: Forward a Port
 ### 7.2 Enter the remote port (e.g. 8080)
 VS Code will give you a local URL to open in a browser
+
+## If you came here from Ubuntu Setup: 
+[Ubuntu Setup Return Link](/public/infrastructure/os/ubuntu-server/setup)
