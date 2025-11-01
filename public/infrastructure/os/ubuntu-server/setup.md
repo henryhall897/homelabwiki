@@ -2,7 +2,7 @@
 title: Ubuntu Server 24 LTS Setup
 description: Baseline Fresh Ubuntu Setup for homelab node
 published: true
-date: 2025-11-01T16:22:04.121Z
+date: 2025-11-01T16:50:18.181Z
 tags: public, infrastructure, os, ubuntu-server, setup
 editor: markdown
 dateCreated: 2025-10-19T17:07:00.119Z
@@ -37,7 +37,7 @@ This guide contains PI specific and regular ubuntu installs.
 
 
 ## 2. If Not completed already in previous two guides above, set up vscode on remote user interface
-[How to set up Remote Desktop for VScode](/public/infrastructure/os/workstation/vscode/ssh)
+> [How to set up Remote Desktop for VScode](/public/infrastructure/os/workstation/vscode/ssh)
 
 ## 3. Connect via Terminal or Vscode
 Then perform the following:
