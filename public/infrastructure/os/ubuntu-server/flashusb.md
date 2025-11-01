@@ -2,7 +2,7 @@
 title: Flash a USB drive with PI Imager for Headless Setup of Ubuntu Server
 description: Instructions on how to setup a flash drive for a Ubuntu Server headless setup
 published: true
-date: 2025-10-31T23:09:08.810Z
+date: 2025-11-01T16:12:16.381Z
 tags: public, infrastructure, os, ubuntu-server, setup
 editor: markdown
 dateCreated: 2025-10-19T17:06:29.350Z
@@ -57,6 +57,8 @@ If key pair needs to be generated, then [generate keypair]()
 9. Click Save → then Next → Write.
 #### Example:
 ![oscustomize.png](/assets/images/pimgr/oscustomize.png)
+## 4. Configure vscode on user interface for Remote Desktop
+> [How to set up VScode for Remote Desktop](/public/infrastructure/os/workstation/vscode/ssh)
 ## Summary
 
 Raspberry Pi Imager’s advanced settings let you automate first-boot provisioning without touching a keyboard.
