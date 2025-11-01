@@ -2,7 +2,7 @@
 title: Flash a USB drive with PI Imager for Headless Setup of Ubuntu Server
 description: Instructions on how to setup a flash drive for a Ubuntu Server headless setup
 published: true
-date: 2025-11-01T16:12:16.381Z
+date: 2025-11-01T16:12:38.972Z
 tags: public, infrastructure, os, ubuntu-server, setup
 editor: markdown
 dateCreated: 2025-10-19T17:06:29.350Z
@@ -65,4 +65,4 @@ Raspberry Pi Imager’s advanced settings let you automate first-boot provisioni
 It’s the simplest and most reproducible way to prepare new nodes for your homelab’s cluster environment.
 
 ## Finishing First time install
-Return to [setup](/public/infrastructure/os/ubuntu-server/setup)
+[Return to Setup](/public/infrastructure/os/ubuntu-server/setup)
