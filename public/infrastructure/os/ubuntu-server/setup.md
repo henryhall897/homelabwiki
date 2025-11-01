@@ -2,7 +2,7 @@
 title: Ubuntu Server 24 LTS Setup
 description: Baseline Fresh Ubuntu Setup for homelab node
 published: true
-date: 2025-11-01T16:15:21.676Z
+date: 2025-11-01T16:22:04.121Z
 tags: public, infrastructure, os, ubuntu-server, setup
 editor: markdown
 dateCreated: 2025-10-19T17:07:00.119Z
@@ -14,20 +14,27 @@ dateCreated: 2025-10-19T17:07:00.119Z
 This guide outlines the standard procedure for provisioning a new Ubuntu Server node within the homelab.
 All nodes—whether control plane, worker, or utility—follow the same minimal baseline to ensure consistency, reproducibility, and security.
 
+This guide contains PI specific and regular ubuntu installs. 
 ## 1. Prerequisites
 
 ### Before installation:
-* Download [Ubuntu Server 24.04 LTS (64-bit) image.](https://ubuntu.com/download/server)
-* [Micro SD card](https://www.amazon.com/uni-Reader-Adapter-Aluminum-Memory/dp/B087QG75L7/ref=sr_1_1_sspa?s=electronics&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY) or [USB Drive](https://www.amazon.com/dp/B09RG1TNM7) to store bootable image on
-* [Raspberry PI Imager](https://www.raspberrypi.com/software) for flashing to the USB Drive or SD card
-#### If flashing a Raspberry PI, Follow this guide:
-> [How To Flash a USB/MicroSD with Pi Imager](/public/infrastructure/os/ubuntu-server/flashusb)
-#### If Flashing a regular device, follow this guide:
-> [How To Flash with Rufus](/public/infrastructure/os/ubuntu-server/rufus)
+#### Download: 
+* [Ubuntu Server 24.04 LTS (64-bit) image.](https://ubuntu.com/download/server)
+#### Choose one for flashing to the USB Drive or SD card
+* [Rufus](https://rufus.ie/en/) OR [Raspberry PI Imager](https://www.raspberrypi.com/software) 
+#### Buy one of the following to store bootable image on (Pis typically use Micro SD cards)
+* [USB Drive](https://www.amazon.com/dp/B09RG1TNM7) OR [Micro SD card](https://www.amazon.com/uni-Reader-Adapter-Aluminum-Memory/dp/B087QG75L7/ref=sr_1_1_sspa?s=electronics&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY) 
 
-### Have access to:
+#### Have access to:
 * A laptop or PC or any computer that can SSH to new machine
 * Network information (static IP, gateway, DNS)
+#### If Flashing a regular device, follow this guide:
+> [How To Flash with Rufus](/public/infrastructure/os/ubuntu-server/rufus)
+#### If flashing a Raspberry PI, Follow this guide:
+> [How To Flash a USB/MicroSD with Pi Imager](/public/infrastructure/os/ubuntu-server/flashusb)
+
+
+
 
 ## 2. If Not completed already in previous two guides above, set up vscode on remote user interface
 [How to set up Remote Desktop for VScode](/public/infrastructure/os/workstation/vscode/ssh)
