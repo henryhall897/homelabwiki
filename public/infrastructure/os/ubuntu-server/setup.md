@@ -2,7 +2,7 @@
 title: Ubuntu Server 24 LTS Setup
 description: Baseline Fresh Ubuntu Setup for homelab node
 published: true
-date: 2025-11-01T15:31:21.910Z
+date: 2025-11-01T16:15:21.676Z
 tags: public, infrastructure, os, ubuntu-server, setup
 editor: markdown
 dateCreated: 2025-10-19T17:07:00.119Z
@@ -29,24 +29,10 @@ All nodes—whether control plane, worker, or utility—follow the same minimal 
 * A laptop or PC or any computer that can SSH to new machine
 * Network information (static IP, gateway, DNS)
 
-## 2. Installation
+## 2. If Not completed already in previous two guides above, set up vscode on remote user interface
+[How to set up Remote Desktop for VScode](/public/infrastructure/os/workstation/vscode/ssh)
 
-### Select Minimal Installation
-During setup, choose Minimal install to avoid unnecessary packages and GUI components.
-Do not install third-party drivers or snaps at this stage.
-
-This naming convention simplifies Ansible inventory and WireGuard peer management.
-
-## 3. Post-Installation Configuration
-After the first boot, log in locally or via SSH
-### SSH
-```bash
-ssh example@example.local
-```
-**OR**
-```bash
-ssh example@<node-ip>
-```
+## 3. Connect via Terminal or Vscode
 Then perform the following:
 ### 3.1 System Update
 ```bash
