@@ -2,7 +2,7 @@
 title: Flashing a Drive with Rufus 
 description: Steps to flash a new OS with ubuntu server with rufus and setting up ssh. 
 published: true
-date: 2025-11-01T16:06:34.612Z
+date: 2025-11-01T16:07:36.337Z
 tags: public, infrastructure, os, ubuntu-server, rufus
 editor: markdown
 dateCreated: 2025-11-01T15:07:26.541Z
@@ -119,5 +119,6 @@ ssh dev@192.154.0.16
 ssh dev@devmachine.lcoal
 ```
 
-If connection succeeds, you have completed the Rufus flash and initial installation steps.
-You can now continue to the next section of the documentation: [Setup Continued](/public/infrastructure/os/ubuntu-server/setup)
+## If connection succeeds, you have completed the Rufus flash and initial installation steps.
+You can now continue to the next section of the documentation: 
+> [Setup Continued](/public/infrastructure/os/ubuntu-server/setup)
